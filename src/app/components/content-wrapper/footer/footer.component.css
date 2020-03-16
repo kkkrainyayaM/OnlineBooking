@@ -1,0 +1,24 @@
+.footer {
+  background: #111;
+  color: #888;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.footer a {
+  color: #ddd;
+}
+
+.content-wrapper {
+  /* These styles are required for the "scroll-over" effect */
+  position: absolute;
+  top: 87%;
+  min-height: 12%;
+  z-index: 2;
+  background: white;
+
+}
+.l-box {
+  padding: 0.5em 2em;
+}
