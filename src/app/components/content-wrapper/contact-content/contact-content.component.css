@@ -1,0 +1,334 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+p{
+  color: #34495e;
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+}
+h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+p {
+  line-height: 1.6em;
+}
+
+.content {
+  padding: 1em 1em 3em;
+}
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+
+.is-center {
+  text-align: center;
+}
+
+.l-box-lrg {
+  padding: 2em;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.l-box-lrg {
+  border: none;
+}
+.content {
+  padding: 1em 1em 3em;
+  color: #7f8c8d;
+}
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+
+.is-center {
+  text-align: center;
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.row-space {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.row-refine {
+  margin: 0 -15px;
+}
+
+.col-2 {
+  width: -webkit-calc((100% - 20px) / 2);
+  width: -moz-calc((100% - 20px) / 2);
+  width: calc((100% - 20px) / 2);
+}
+
+@media (max-width: 767px) {
+  .col-2 {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   #BOX-SIZING
+   ========================================================================== */
+/**
+ * More sensible default box-sizing:
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* ==========================================================================
+   #RESET
+   ========================================================================== */
+/**
+ * A very simple reset that sits on top of Normalize.css.
+ */
+body,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, dd, ol, ul,
+figure,
+hr,
+fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================================================
+   #PAGE WRAPPER
+   ========================================================================== */
+.page-wrapper {
+  min-height: 100vh;
+}
+
+
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   #BACKGROUND
+   ========================================================================== */
+
+.bg-color-1 {
+  background: #ffece0;
+}
+
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+.p-t-15 {
+  padding-top: 15px;
+}
+
+.p-t-5 {
+  padding-top: 5px;
+}
+
+.p-t-275 {
+  padding-top: 275px;
+}
+
+@media (max-width: 767px) {
+  .p-t-275 {
+    padding-top: 120px;
+  }
+}
+
+.p-t-395 {
+  padding-top: 395px;
+}
+
+@media (max-width: 767px) {
+  .p-t-395 {
+    padding-top: 120px;
+  }
+}
+
+.p-t-290 {
+  padding-top: 290px;
+}
+
+@media (max-width: 767px) {
+  .p-t-290 {
+    padding-top: 120px;
+  }
+}
+
+.p-t-240 {
+  padding-top: 240px;
+}
+
+@media (max-width: 767px) {
+  .p-t-240 {
+    padding-top: 150px;
+  }
+}
+
+.p-t-200 {
+  padding-top: 200px;
+}
+
+@media (max-width: 767px) {
+  .p-t-200 {
+    padding-top: 150px;
+  }
+}
+
+.p-t-165 {
+  padding-top: 165px;
+}
+
+@media (max-width: 767px) {
+  .p-t-165 {
+    padding-top: 120px;
+  }
+}
+
+.p-b-100 {
+  padding-bottom: 100px;
+}
+
+@media (max-width: 767px) {
+  .p-b-100 {
+    padding-bottom: 250px;
+  }
+}
+
+.p-b-120 {
+  padding-bottom: 120px;
+}
+
+@media (max-width: 767px) {
+  .p-b-120 {
+    padding-bottom: 250px;
+  }
+}
+
+.m-r-45 {
+  margin-right: 45px;
+}
+
+@media (max-width: 767px) {
+  .m-r-45 {
+    margin-right: 15px;
+  }
+}
+
+/* ==========================================================================
+   #WRAPPER
+   ========================================================================== */
+.wrapper {
+  margin: 0 auto;
+}
+
+.wrapper--w680 {
+  max-width: 680px;
+}
+
+.wrapper--w720 {
+  max-width: 720px;
+}
+
+.wrapper--w900 {
+  max-width: 900px;
+}
+
+.wrapper--w1100 {
+  max-width: 1170px;
+}
+
+.wrapper--w1226 {
+  max-width: 1226px;
+}

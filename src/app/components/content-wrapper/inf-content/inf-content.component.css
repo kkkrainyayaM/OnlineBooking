@@ -1,0 +1,82 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label{
+  color: #34495e;
+}
+.l-box {
+  padding: 1em;
+}
+.l-box-lrg {
+  border: none;
+  padding: 2em;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+
+}
+
+.is-center {
+   text-align: center;
+ }
+/* We want to give the content area some more padding */
+.content {
+  padding: 1em 1em 3em;
+}
+.content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+
+.ribbon {
+  background: #2d3e50;
+  color: #aaa;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+
+
+h3 {
+  font-size: 24px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content-subhead {
+  color: #357ebd;
+}
+.content-subhead i {
+  margin-right: 7px;
+}
+
+
+
+.pure-img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+
+/* This is a modifier class used when the content-head is inside a ribbon */
+.content-head-ribbon {
+  color: white;
+}
+
