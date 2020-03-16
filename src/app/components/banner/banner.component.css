@@ -1,0 +1,55 @@
+.banner {
+  background: transparent url('../../../assets/img/TfEwgYjzu2A1.jpg') 0 0 no-repeat fixed;
+  text-align: center;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg');
+  height: 200px;
+  width: 100%;
+  margin-bottom: 3em;
+  display: table;
+
+  line-height: 1.7em;
+  font-size: 14px;
+
+  text-transform: uppercase;
+  z-index: 1;
+  position: fixed !important;
+  overflow: hidden;
+  /* The following styles are required for the "scroll-over" effect */
+
+}
+
+.banner-head {
+  display: table-cell;
+  vertical-align: middle;
+  margin-bottom: 0;
+  font-size: 2em;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0 1px 1px black;
+}
+
+.banner-head2{
+   font-size: 30px;
+   color: #e7e7e7;
+ }
+@media(min-width: 767px) {
+
+  .banner-head {
+    font-size: 4em;
+  }
+  .pricing-table {
+    margin-bottom: 0;
+  }
+
+}
+@media (min-width: 480px) {
+  .banner {
+    height: 400px;
+  }
+  .banner-head {
+    font-size: 3em;
+  }
+}
+
+
