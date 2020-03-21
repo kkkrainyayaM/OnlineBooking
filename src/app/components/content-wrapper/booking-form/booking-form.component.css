@@ -1,3 +1,4 @@
+
 h1,
 h2,
 h3,
@@ -11,6 +12,7 @@ label {
 .content {
   padding: 1em 1em 3em;
   color: #7f8c8d;
+  max-height: fit-content;
 }
 
 /* This is the class used for the main content headers (<h2>) */
@@ -322,25 +324,10 @@ a:active {
   margin: 0 auto;
 }
 
-.wrapper--w680 {
-  max-width: 680px;
-}
-
-.wrapper--w720 {
-  max-width: 720px;
-}
-
-.wrapper--w900 {
-  max-width: 900px;
-}
-
 .wrapper--w1100 {
   max-width: 1170px;
 }
 
-.wrapper--w1226 {
-  max-width: 1226px;
-}
 
 /* ==========================================================================
    #BUTTON
@@ -853,3 +840,68 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0 15px;
 }
 
+.results-block{
+  height: 300px;
+  margin: 1em 1em 5em 1em;
+}
+
+.flights{
+  width: 50%;
+  height: inherit;
+  overflow:scroll;
+  overflow-y: paged-y-controls;
+  overflow-x:hidden;
+
+}
+
+.flight{
+  font-size: 18px;
+  color: black;
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  position: relative;
+  margin-bottom: 23px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  padding: 16px 20px;
+  padding-bottom: 10px;
+  background: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  float: left;
+  margin-right: 10px;
+}
+
+.btn-add {
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 2em;
+  position: relative;
+  padding: 8px;
+  margin: 5px;
+  left: 30%;
+  color: #7f8c8d;
+}
+
+.btn-add:hover{
+  border: 1px solid black;
+  color: #519251;
+}
+
+.for-map{
+  width: 50%;
+  height: inherit;
+}
+
+.departure{
+  margin-right: 10px;
+}
+
+.departure:hover{
+  text-shadow: orange 1px 1px 2px;
+}
+
+.arrival:hover{
+  text-shadow: #3875d7 1px 1px 2px;
+}

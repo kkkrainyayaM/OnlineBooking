@@ -10,6 +10,7 @@ import { BookingFormComponent } from './components/content-wrapper/booking-form/
 import { InfContentComponent } from './components/content-wrapper/inf-content/inf-content.component';
 import { ContactContentComponent } from './components/content-wrapper/contact-content/contact-content.component';
 import { PricingComponent } from './components/content-wrapper/pricing/pricing.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PricingComponent } from './components/content-wrapper/pricing/pricing.c
     PricingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
