@@ -53,7 +53,7 @@
                       <span class="arrival">ПРИБЫТИЕ: {{flight.timeArrival}} {{flight.pointArrival}}</span></p>
                   </div>
                   <div>
-                    <button type="submit" class="btn-add pure-button">Забронировать</button>
+                    <button title="book" class="btn-add pure-button" (click)="book(flight.id)">Забронировать</button>
                   </div>
                 </div>
                 <div class="for-map">

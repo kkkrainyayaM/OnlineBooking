@@ -1,7 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {Flight} from '../../../entities/flight';
-import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {map, catchError, tap} from 'rxjs/operators';
+
+const endpoint = 'http://localhost:4200/';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 @Component({
   selector: 'app-booking-form',
@@ -20,14 +29,23 @@ export class BookingFormComponent implements OnInit {
       {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'}
     ];
 
-  searchOption = [];
-  postUrl = 'https://jsonplaceholder.typicode.com/posts';
+  constructor(private http: HttpClient) {
+  }
 
-  constructor(private http: HttpClient) {}
-  getPosts(): Observable < Flight[] > {
-  return this.http.get<Flight[]>(this.postUrl);
-}
+  private extractData(res: Response) {
+    const body = res;
+    return body || {};
+  }
 
-ngOnInit() {}
+  getFlights(): Observable<any> {
+    return this.http.get(endpoint + 'flights').pipe(
+      map(this.extractData));
+  }
+
+  bookFlight(id): Observable<any> {
+    return this.http.put(endpoint + 'flights/' + id, httpOptions);
+  }
+  ngOnInit() {
+  }
 
 }
