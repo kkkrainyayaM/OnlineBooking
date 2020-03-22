@@ -1,47 +1,62 @@
-<h2>Регистрация</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="name">Имя</label>
-    <input id="name" type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-      <div *ngIf="f.name.errors.required">Обязательно для заполнения</div>
-    </div>
+<app-header></app-header>
+<div class="text-center body" style="padding:100px 0">
+  <div class="logo">регистрация</div>
+  <!-- Main Form -->
+  <div class="login-form-1">
+    <form id="register-form" class="text-left">
+      <div class="login-form-main-message"></div>
+      <div class="main-login-form">
+        <div class="login-group">
+          <div class="form-group">
+            <label for="name" class="sr-only">Имя</label>
+            <input id="name" type="text" formControlName="name" class="form-control" placeholder="имя"
+                   [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Обязательно для заполнения</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="surname" class="sr-only">Фамилия</label>
+            <input id="surname" type="text" formControlName="surname" class="form-control" placeholder="фамилия"
+                   [ngClass]="{ 'is-invalid': submitted && f.surname.errors }"/>
+            <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
+              <div *ngIf="f.surname.errors.required">Обязательно для заполнения</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="login" class="sr-only">Логин</label>
+            <input id="login" type="text" formControlName="login" class="form-control" placeholder="логин"
+                   [ngClass]="{ 'is-invalid': submitted && f.login.errors }"/>
+            <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+              <div *ngIf="f.login.errors.required">Обязательно для заполнения</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="sr-only">Пароль</label>
+            <input id="password" type="password" formControlName="password" class="form-control" placeholder="пароль"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Обязательно для заполнения</div>
+              <div *ngIf="f.password.errors.minlength">Пароль должен содержать не менее 6 символов</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="sr-only">Телефон</label>
+            <input id="phone" type="text" formControlName="phone" class="form-control" placeholder="телефон"
+                   [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors.required">Обязательно для заполнения</div>
+            </div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="login-button"><i class="fa fa-chevron-right"></i>
+          <span *ngIf="loading"></span>
+        </button>
+      </div>
+      <div class="etc-login-form">
+        <p>Уже есть аккаунт? <a routerLink="/login" href="#" >вход</a></p>
+      </div>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="surname">Фамилия</label>
-    <input id="surname" type="text" formControlName="surname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.surname.errors }" />
-    <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
-      <div *ngIf="f.surname.errors.required">Обязательно для заполнения</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="login">Логин</label>
-    <input id="login" type="text" formControlName="login" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.login.errors }" />
-    <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
-      <div *ngIf="f.login.errors.required">Обязательно для заполнения</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="password">Пароль</label>
-    <input id="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Обязательно для заполнения</div>
-      <div *ngIf="f.password.errors.minlength">Пароль должен содержать не менее 6 символов</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="phone">Телефон</label>
-    <input id="phone" type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-      <div *ngIf="f.phone.errors.required">Обязательно для заполнения</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-      Регистрация
-    </button>
-    <a routerLink="/login" class="btn btn-link">Отмена</a>
-  </div>
-</form>
-
+</div>
+<app-footer></app-footer>

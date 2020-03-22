@@ -38,12 +38,12 @@ export class BookingFormComponent implements OnInit {
   }
 
   getFlights(): Observable<any> {
-    return this.http.get(endpoint + 'flights').pipe(
+    return this.http.get(endpoint).pipe(
       map(this.extractData));
   }
 
   bookFlight(id): Observable<any> {
-    return this.http.put(endpoint + 'flights/' + id, httpOptions);
+    return this.http.put(endpoint + id, httpOptions);
   }
   ngOnInit() {
   }

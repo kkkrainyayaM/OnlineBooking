@@ -17,20 +17,29 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BookingFlightComponent } from './components/booking-flight/booking-flight.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AccountComponent } from './components/account/account.component';
+import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes = [
   {
-    path: '/',
-    component: BookingFormComponent,
-    data: { title: 'Flights List' }
+    path: '',
+    component: HomeComponent
   },
   {
     path: 'booking/:id',
     component: BookingFlightComponent,
     data: { title: 'Flight book' }
   },
-  { path: '',
-    redirectTo: '/',
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  { path: '**',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];
@@ -48,7 +57,9 @@ const appRoutes: Routes = [
     PricingComponent,
     BookingFlightComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
