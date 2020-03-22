@@ -9,13 +9,21 @@
             <form class="form" method="POST" action="#">
               <div class="input-group input--large">
                 <label class="label">Откуда</label>
-                <input class="input--style-1" type="text" placeholder="Станция отправления"
-                       name="going">
+                <select class="input--style-1 selection"
+                        name="going">
+                  <option value="Luninec">Лунинец</option>
+                  <option value="Mikashevichi">Микашевичи</option>
+                  <option value="Minsk">Минск</option>
+                </select>
               </div>
               <div class="input-group input--large">
                 <label class="label">Куда</label>
-                <input class="input--style-1" type="text" placeholder="Станция прибытия"
-                       name="going">
+                <select class="input--style-1 selection"
+                        name="going">
+                  <option value="Minsk">Минск</option>
+                  <option value="Mikashevichi">Микашевичи</option>
+                  <option value="Luninec">Лунинец</option>
+                </select>
               </div>
               <div class="input-group input--medium">
                 <label class="label">Дата</label>
@@ -59,7 +67,7 @@
                 <div class="for-map">
 
                 </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>

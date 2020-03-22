@@ -13,22 +13,24 @@ import { PricingComponent } from './components/content-wrapper/pricing/pricing.c
 import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BookingFlightComponent } from './components/booking-flight/booking-flight.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   {
-    path: 'flights',
+    path: '/',
     component: BookingFormComponent,
     data: { title: 'Flights List' }
   },
   {
-    path: 'flight-book/:id',
+    path: 'booking/:id',
     component: BookingFlightComponent,
     data: { title: 'Flight book' }
   },
   { path: '',
-    redirectTo: '/flights',
+    redirectTo: '/',
     pathMatch: 'full'
   }
 ];
@@ -44,13 +46,16 @@ const appRoutes: Routes = [
     InfContentComponent,
     ContactContentComponent,
     PricingComponent,
-    BookingFlightComponent
+    BookingFlightComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

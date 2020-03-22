@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Flight} from '../../../entities/flight';
+import {Flight} from '../../../entities/flight/flight';
 import {Observable, of} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
@@ -48,4 +48,7 @@ export class BookingFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  book(id: number) {
+
+  }
 }
