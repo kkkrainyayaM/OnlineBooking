@@ -12,6 +12,27 @@ import { ContactContentComponent } from './components/content-wrapper/contact-co
 import { PricingComponent } from './components/content-wrapper/pricing/pricing.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { BookingFlightComponent } from './components/booking-flight/booking-flight.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'flights',
+    component: BookingFormComponent,
+    data: { title: 'Flights List' }
+  },
+  {
+    path: 'flight-book/:id',
+    component: BookingFlightComponent,
+    data: { title: 'Flight book' }
+  },
+  { path: '',
+    redirectTo: '/flights',
+    pathMatch: 'full'
+  }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +43,12 @@ import { HttpClientModule } from '@angular/common/http';
     BookingFormComponent,
     InfContentComponent,
     ContactContentComponent,
-    PricingComponent
+    PricingComponent,
+    BookingFlightComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
     BrowserModule,
     HttpClientModule
   ],
