@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {EntryComponent, HeaderComponent} from './components/header/header.component';
+import { HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/content-wrapper/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { ContentWrapperComponent } from './components/content-wrapper/content-wrapper.component';
@@ -14,29 +14,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule, Routes } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
-import {User} from './entities/user';
 import { AdminComponent } from './components/admin/admin.component';
+import {EntryComponent} from './components/entry/entry.component';
 
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   },
   {
     path: 'account/:id',
@@ -60,8 +50,6 @@ const appRoutes: Routes = [
     ContactContentComponent,
     PricingComponent,
     BookingFlightComponent,
-    LoginComponent,
-    RegisterComponent,
     AccountComponent,
     HomeComponent,
     EntryComponent,

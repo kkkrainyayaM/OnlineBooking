@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {EntryComponent} from '../entry/entry.component';
+import {User} from '../../entities/user';
+import {AuthenticationService, UserService} from '../../services';
+import {first} from 'rxjs/operators';
 
 
 @Component({
@@ -10,12 +13,26 @@ import {EntryComponent} from '../entry/entry.component';
 })
 
 export class HeaderComponent implements OnInit {
+  loading = false;
+  currentUser: User;
+  userFromApi: User;
+  noUser = true;
 
   constructor(
-    public dialog: MatDialog) {}
+    public dialog: MatDialog, private userService: UserService,
+    private authenticationService: AuthenticationService) {
+    this.currentUser = this.authenticationService.currentUserValue;
+    this.noUser = false;
+  }
 
   ngOnInit() {
+    this.loading = true;
+    this.userService.getById(this.currentUser.id).pipe(first()).subscribe(user => {
+      this.loading = false;
+      this.userFromApi = user;
+    });
   }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(EntryComponent, {
       width: '500px',
