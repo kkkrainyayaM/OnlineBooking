@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject, config, Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
-import {User} from '../entities/user/user';
+import {User} from '../entities/user';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {

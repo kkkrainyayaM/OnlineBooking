@@ -97,27 +97,28 @@ export class BookingFlightComponent {
     private dialogRef: MatDialogRef<BookingFlightComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
     this.flight = data.bookedFlight;
-    this.point = data.bookedFlight.pointDeparture;
     this.places = data.places;
-    this.cost = 14 * this.places;
-    /* this.flight = data.bookedFlight;
-     if (data.bookedFlight.pointDeparture === 'Минск') {
+    if (data.bookedFlight.pointDeparture === 'Минск') {
        this.point = 'Автовокзал Центральный г.Минск';
      } else if (data.bookedFlight.pointDeparture === 'Лунинец') {
        this.point = 'Автовокзал г.Лунинец';
      } else { this.point = data.bookedFlight.pointDeparture; }
 
-     if ((data.bookedFlight.pointDeparture === 'Минск' && data.bookedFlight.pointArrival === 'Лунинец')
+    if ((data.bookedFlight.pointDeparture === 'Минск' && data.bookedFlight.pointArrival === 'Лунинец')
        || (data.bookedFlight.pointDeparture === 'Лунинец' && data.bookedFlight.pointArrival === 'Минск')) {
        this.cost = 14 * this.places;
      } else if ((data.bookedFlight.pointDeparture === 'Минск' && data.bookedFlight.pointArrival === 'Микашевичи')
        || (data.bookedFlight.pointDeparture === 'Микашевичи' && data.bookedFlight.pointArrival === 'Минск')) {
        this.cost = 12 * this.places;
-     }*/
+     }
   }
 
   onNoClick(): void {
     this.dialogRef.close();
     console.log(this.places, this.cost);
+  }
+
+  book() {
+
   }
 }
