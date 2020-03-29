@@ -16,10 +16,6 @@ export class UserService {
     return this.http.post(`http://localhost:4200/users/register`, user);
   }
 
-  delete(id: number) {
-    return this.http.delete(`http://localhost:4200/users/delete/${id}`);
-  }
-
   getById(id: number) {
     return this.http.get<User>('http://localhost:4200/users/${id}');
   }
