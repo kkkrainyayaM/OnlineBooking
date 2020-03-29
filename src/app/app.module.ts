@@ -21,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
+import {User} from './entities/user';
 
 
 const appRoutes: Routes = [
