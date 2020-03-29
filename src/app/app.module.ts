@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {User} from './entities/user';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 const appRoutes: Routes = [
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
     AccountComponent,
     HomeComponent,
     EntryComponent,
+    AdminComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
