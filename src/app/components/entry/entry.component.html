@@ -1,0 +1,65 @@
+<div mat-dialog-content class="dialog container">
+  <div  class="row">
+    <div class="col-md-12 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#" class="active" id="login-form-link">Вход</a>
+            </div>
+            <div class="col-xs-6">
+              <a href="#" id="register-form-link">Регистрация</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div  class="panel-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <form id="login-form" [formGroup]="loginForm" action="http://phpoll.com/login/process" method="post"
+                    role="form" style="display: block;" (ngSubmit)="login()">
+                <div class="form-group">
+                  <input formControlName="phone" type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Номер телефона" value="">
+                </div>
+                <div class="form-group">
+                  <input formControlName="password" type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+                </div>
+                <div class="form-group text-center">
+                  <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                  <label for="remember"> Запомнить меня</label>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Войти">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form id="register-form" [formGroup]="registerForm" action="http://phpoll.com/register/process"
+                    method="post" role="form" style="display: none;" (ngSubmit)="register()">
+                <div class="form-group">
+                  <input formControlName="firstname" type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="Имя" value="">
+                </div>
+                <div class="form-group">
+                  <input formControlName="lastname" type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Фамилия" value="">
+                </div>
+                <div class="form-group">
+                  <input formControlName="phone" type="email" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Номер телефона" value="">
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Зарегистироваться">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
