@@ -6,28 +6,24 @@
       <div class="wrapper wrapper--w1100">
         <div class="card card-7">
           <div class="card-body">
-            <form class="form" method="POST" action="#">
+            <form [formGroup]="form" class="form" method="POST" (ngSubmit)="onSubmit()">
               <div class="input-group input--large">
                 <label class="label">Откуда</label>
-                <select class="input--style-1 selection"
+                <select formControlName="departure" class="input--style-1 selection"
                         name="going">
-                  <option value="Luninec">Лунинец</option>
-                  <option value="Mikashevichi">Микашевичи</option>
-                  <option value="Minsk">Минск</option>
+                  <option *ngFor="let depPoint of Points" [ngValue]="depPoint" >{{depPoint.name}}</option>
                 </select>
               </div>
               <div class="input-group input--large">
                 <label class="label">Куда</label>
-                <select class="input--style-1 selection"
+                <select formControlName="arrival" class="input--style-1 selection"
                         name="going">
-                  <option value="Minsk">Минск</option>
-                  <option value="Mikashevichi">Микашевичи</option>
-                  <option value="Luninec">Лунинец</option>
+                  <option *ngFor="let arrPoint of Points" [ngValue]="arrPoint">{{arrPoint.name}}</option>
                 </select>
               </div>
               <div class="input-group input--medium">
                 <label class="label">Дата</label>
-                <input class="input--style-1" type="text" name="checkin" placeholder="мм/дд/гггг"
+                <input formControlName="date" class="input--style-1" type="text" name="checkin" placeholder="дд/мм/гггг"
                        id="input-start">
               </div>
               <div class="input-group input--medium">
@@ -37,7 +33,7 @@
                     <span class="plus">+</span>
                     <span class="minus">-</span>
                   </div>
-                  <input class="input--style-1 quantity" type="text" name="passengers"
+                  <input formControlName="places" class="input--style-1 quantity" type="text" name="passengers"
                          value="1 место">
                 </div>
               </div>
@@ -48,7 +44,7 @@
       </div>
     </div>
   </div>
-  <div class="pure-g">
+  <div *ngIf="flights.length>0" class="pure-g">
     <div class="l-box-lrg pure-g pure-u-md-1">
       <div class="wrapper wrapper--w1100">
         <div class="card card-7">
@@ -61,7 +57,7 @@
                       <span class="arrival">ПРИБЫТИЕ: {{flight.timeArrival}} {{flight.pointArrival}}</span></p>
                   </div>
                   <div>
-                    <button title="book" class="btn-add pure-button" (click)="book(flight.id)">Забронировать</button>
+                    <button title="book" class="btn-add pure-button" (click)="openDialog(flight)" >Забронировать</button>
                   </div>
                 </div>
                 <div class="for-map">

@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
+import {EntryComponent, HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/content-wrapper/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { ContentWrapperComponent } from './components/content-wrapper/content-wrapper.component';
-import { BookingFormComponent } from './components/content-wrapper/booking-form/booking-form.component';
+import {BookingFlightComponent, BookingFormComponent} from './components/content-wrapper/booking-form/booking-form.component';
 import { InfContentComponent } from './components/content-wrapper/inf-content/inf-content.component';
 import { ContactContentComponent } from './components/content-wrapper/contact-content/contact-content.component';
 import { PricingComponent } from './components/content-wrapper/pricing/pricing.component';
@@ -14,21 +14,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule, Routes } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BookingFlightComponent } from './components/booking-flight/booking-flight.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
-  },
-  {
-    path: 'booking/:id',
-    component: BookingFlightComponent,
-    data: { title: 'Flight book' }
   },
   {
     path: 'register',
@@ -37,6 +35,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'account/:id',
+    component: AccountComponent,
   },
   { path: '**',
     redirectTo: '',
@@ -59,14 +61,24 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     AccountComponent,
-    HomeComponent
+    HomeComponent,
+    EntryComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule
+  ],
+  entryComponents: [
+    EntryComponent,
+    BookingFlightComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
