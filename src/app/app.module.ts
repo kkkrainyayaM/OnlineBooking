@@ -21,16 +21,30 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule} from '@angular/mate
 import {MatDialogModule} from '@angular/material/dialog';
 import { AdminComponent } from './components/admin/admin.component';
 import {EntryComponent} from './components/entry/entry.component';
+import {Role} from './entities/role';
+import {AuthGuard} from './helpers/auth.guard';
+import {AuthenticationService} from './services';
 
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
   },
   {
     path: 'account/:id',
     component: AccountComponent,
+  },
+  {
+    path: 'entry',
+    component: EntryComponent
   },
   { path: '**',
     redirectTo: '',
