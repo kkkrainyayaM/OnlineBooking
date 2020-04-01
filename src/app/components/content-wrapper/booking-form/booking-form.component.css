@@ -12,7 +12,6 @@ label {
 /* We want to give the content area some more padding */
 .content {
   padding: 1em 1em 3em;
-  color: #7f8c8d;
   max-height: fit-content;
 }
 

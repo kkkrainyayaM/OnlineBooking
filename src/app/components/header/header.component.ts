@@ -16,21 +16,19 @@ export class HeaderComponent implements OnInit {
   loading = false;
   currentUser: User;
   userFromApi: User;
-  noUser = true;
 
   constructor(
     public dialog: MatDialog, private userService: UserService,
     private authenticationService: AuthenticationService) {
     this.currentUser = this.authenticationService.currentUserValue;
-    this.noUser = false;
   }
 
   ngOnInit() {
     this.loading = true;
-    this.userService.getById(this.currentUser.id).pipe(first()).subscribe(user => {
+  /*  this.userService.getById(this.currentUser.id).pipe(first()).subscribe(user => {
       this.loading = false;
       this.userFromApi = user;
-    });
+    });*/
   }
 
   openDialog(): void {

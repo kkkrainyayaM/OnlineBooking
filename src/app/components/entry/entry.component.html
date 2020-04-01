@@ -1,5 +1,5 @@
 <div mat-dialog-content class="dialog container">
-  <div  class="row">
+  <div class="row">
     <div class="col-md-12 col-md-offset-3">
       <div class="panel panel-login">
         <div class="panel-heading">
@@ -13,16 +13,26 @@
           </div>
           <hr>
         </div>
-        <div  class="panel-body">
+        <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form id="login-form" [formGroup]="loginForm" action="http://phpoll.com/login/process" method="post"
+              <form id="login-form" [formGroup]="loginForm" action="http://phpoll.com/login/process"
                     role="form" style="display: block;" (ngSubmit)="login()">
                 <div class="form-group">
-                  <input formControlName="phone" type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Номер телефона" value="">
+                  <input formControlName="phone" type="text" name="phone" id="phone"  value=""
+                         tabindex="1" class="form-control" placeholder="Номер телефона"
+                         [ngClass]="{ 'is-invalid': submitted && fl.phone.errors }">
+                </div>
+                <div *ngIf="submitted && fl.phone.errors" class="invalid-feedback">
+                  <div *ngIf="fl.phone.errors.required">Phone is required</div>
                 </div>
                 <div class="form-group">
-                  <input formControlName="password" type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+                  <input formControlName="password" type="password" name="password" id="password"
+                         tabindex="2" class="form-control" placeholder="Пароль"  value=""
+                         [ngClass]="{ 'is-invalid': submitted && fl.password.errors }">
+                </div>
+                <div *ngIf="submitted && fl.password.errors" class="invalid-feedback">
+                  <div *ngIf="fl.password.errors.required">Password is required</div>
                 </div>
                 <div class="form-group text-center">
                   <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -31,7 +41,9 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                      <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Войти">
+                      <input type="submit" name="login-submit" id="login-submit" tabindex="4"
+                             class="form-control btn btn-login" value="Войти">
+                      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                     </div>
                   </div>
                 </div>
@@ -39,19 +51,36 @@
               <form id="register-form" [formGroup]="registerForm" action="http://phpoll.com/register/process"
                     method="post" role="form" style="display: none;" (ngSubmit)="register()">
                 <div class="form-group">
-                  <input formControlName="firstname" type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="Имя" value="">
+                  <input formControlName="firstname" type="text" name="firstname" id="firstname" tabindex="1"
+                         class="form-control" placeholder="Имя" value=""
+                         [ngClass]="{ 'is-invalid': submitted && fr.firstname.errors }">
+                </div>
+                <div *ngIf="submitted && fr.firstname.errors" class="invalid-feedback">
+                  <div *ngIf="fr.firstname.errors.required">Firstname is required</div>
                 </div>
                 <div class="form-group">
-                  <input formControlName="lastname" type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Фамилия" value="">
+                  <input formControlName="lastname" type="text" name="lastname" id="lastname" tabindex="1"
+                         class="form-control" placeholder="Фамилия" value=""
+                         [ngClass]="{ 'is-invalid': submitted && fr.lastname.errors }">
+                </div>
+                <div *ngIf="submitted && fr.lastname.errors" class="invalid-feedback">
+                  <div *ngIf="fr.lastname.errors.required">Lastname is required</div>
                 </div>
                 <div class="form-group">
-                  <input formControlName="phone" type="email" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Номер телефона" value="">
+                  <input formControlName="phone" type="email" name="phone" id="phone" tabindex="1" class="form-control"
+                         placeholder="Номер телефона" value=""
+                         [ngClass]="{ 'is-invalid': submitted && fr.phone.errors }">
+                </div>
+                <div *ngIf="submitted && fr.phone.errors" class="invalid-feedback">
+                  <div *ngIf="fr.phone.errors.required">Phone is required</div>
                 </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                      <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Зарегистироваться">
+                      <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                             class="form-control btn btn-register" value="Зарегистироваться">
                     </div>
+                    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                   </div>
                 </div>
               </form>
