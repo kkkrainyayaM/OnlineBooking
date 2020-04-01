@@ -1,9 +1,79 @@
 <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed" id="header">
   <a routerLink="/" class="pure-menu-heading">Пассажирские перевозки</a>
   <ul class="pure-menu-list">
-    <li class="pure-menu-item"><a  class="pure-menu-link"></a></li>
+    <li class="pure-menu-item"><a href="#contact" class="pure-menu-link">Контакты</a></li>
+    <li class="pure-menu-item pure-menu-selected"><a href="#pricing" class="pure-menu-link">Стоимость</a></li>
+    <li class="pure-menu-item">
+    <li class="pure-menu-item">
+      <button (click)="exit()" class="pure-menu-link">Выход</button>
+    </li>
   </ul>
 </div>
+<div class="content">
+  <div class="pure-g">
+    <div class="pure-u-1-3">
+      <div class="forForm">
+        <div class="content-head is-center">
+          <h4>Персональная информация</h4>
+        </div>
+        <form class="pure-form pure-form-stacked" (ngSubmit)="updateAcc()">
+          <fieldset>
+            <label for="firstname">Имя</label>
+            <input id="firstname" type="text" placeholder="{{userFromApi.firstname}}">
 
+            <label for="lastname">Фамилия</label>
+            <input id="lastname" type="text" placeholder="{{userFromApi.lastname}}">
+
+            <label for="phone">Номер телефона</label>
+            <input id="phone" type="text">
+
+            <label for="password">Пароль</label>
+            <input id="password" type="password">
+          </fieldset>
+          <div class="add-btn">
+            <button type="submit" class="pure-button pure-button-primary">Сохранить изменения</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="pure-u-2-3">
+      <div class="table">
+        <div class="content-head is-center">
+          <h4>История поездок</h4>
+        </div>
+
+        <div class="mdc-data-table">
+          <table class="mdc-data-table__table table" aria-label="Рейсы">
+            <thead>
+            <tr class="mdc-data-table__header-row">
+              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">
+                ID
+              </th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Дата отправления</th>
+              <th class="mdc-data-table__header-cell " role="columnheader" scope="col">Пункт отправления</th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Время отправления</th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Пункт прибытия</th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Время прибытия</th>
+              <th class="mdc-data-table__header-cell" role="columnheader" scope="col"></th>
+            </tr>
+            </thead>
+            <tbody class="mdc-data-table__content">
+            <tr *ngFor="let flight of flights" class="mdc-data-table__row selected">
+              <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{flight.id}}</td>
+              <td class="mdc-data-table__cell ">{{flight.date}}</td>
+              <td class="mdc-data-table__cell ">{{flight.pointDeparture}}</td>
+              <td class="mdc-data-table__cell">{{flight.timeDeparture}}</td>
+              <td class="mdc-data-table__cell">{{flight.pointArrival}}</td>
+              <td class="mdc-data-table__cell">{{flight.timeArrival}}</td>
+              <td class="mdc-data-table__cell">
+                <button class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Пассажиры</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
 
 <app-footer></app-footer>
