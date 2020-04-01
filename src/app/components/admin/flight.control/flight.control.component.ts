@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {RestService} from '../../../services/rest.service';
+import {Flight} from '../../../entities/flight';
 
 @Component({
   selector: 'app-flight.control',
@@ -7,13 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightControlComponent implements OnInit {
 
-  constructor() { }
+  newFlight: Flight;
+  flights: any = [];
+
+  constructor(public rest: RestService) { }
 
   ngOnInit() {
+   this.getFlights();
   }
 
   AddFlight() {
+    this.rest.addFlight(this.newFlight);
+  }
 
+  getFlights() {
+    this.flights = [];
+    this.rest.getFlights().subscribe((data: {}) => {
+      console.log(data);
+      this.flights = data;
+    });
   }
 }
 
@@ -24,9 +38,18 @@ export class FlightControlComponent implements OnInit {
 })
 export class FlightPassengersComponent implements OnInit {
 
-  constructor() { }
+  users: any = [];
+  constructor(public rest: RestService) { }
 
   ngOnInit() {
+    this.getPassengers();
   }
 
+  private getPassengers() {
+   /* this.users = [];
+    this.rest.getPassengers(id).subscribe((data: {}) => {
+      console.log(data);
+      this.users = data;
+    });*/
+  }
 }
