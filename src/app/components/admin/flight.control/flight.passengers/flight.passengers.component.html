@@ -6,35 +6,42 @@
     <li class="pure-menu-item"><a href="/" class="pure-menu-link">Выход</a></li>
   </ul>
 </div>
-<div class="content">
-  <h3 class="content-head is-center">Пассажиры рейса {{selectedFlight.id}}</h3>
-  <div  class="mdc-data-table">
-    <table class="mdc-data-table__table table" aria-label="Пассажиры">
-      <thead>
-      <tr class="mdc-data-table__header-row">
-        <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">ID</th>
-        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Фамилия</th>
-        <th class="mdc-data-table__header-cell " role="columnheader" scope="col">Имя</th>
-        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Телефон</th>
-      </tr>
-      </thead>
-      <tbody class="mdc-data-table__content">
-      <tr *ngFor="let user of users" class="mdc-data-table__row selected">
-        <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{user.id}}</td>
-        <td class="mdc-data-table__cell ">{{user.lastname}}</td>
-        <td class="mdc-data-table__cell ">{{user.firstname}}</td>
-        <td class="mdc-data-table__cell">{{user.phone}}</td>
-        <td class="mdc-data-table__cell"></td>
-      </tr>
-      <tr class="mdc-data-table__row selected">
-        <td class="mdc-data-table__cell mdc-data-table__cell--numeric">lalala</td>
-        <td class="mdc-data-table__cell ">lalalad</td>
-        <td class="mdc-data-table__cell ">regfgdg</td>
-        <td class="mdc-data-table__cell">dfgdfg</td>
-        <td class="mdc-data-table__cell"></td>
-      </tr>
-      </tbody>
-    </table>
+<div class="content is-center">
+  <h3 class="content-head">Пассажиры рейса {{selectedFlight.id}}</h3>
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <div class="mdc-data-table table">
+        <table class="mdc-data-table__table table" aria-label="Пассажиры">
+          <thead>
+          <tr class="mdc-data-table__header-row">
+            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
+                scope="col">
+              ID
+            </th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Фамилия</th>
+            <th class="mdc-data-table__header-cell " role="columnheader" scope="col">Имя</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Телефон</th>
+          </tr>
+          </thead>
+          <tbody class="mdc-data-table__content">
+          <tr *ngFor="let user of users" class="mdc-data-table__row selected">
+            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{user.id}}</td>
+            <td class="mdc-data-table__cell ">{{user.lastname}}</td>
+            <td class="mdc-data-table__cell ">{{user.firstname}}</td>
+            <td class="mdc-data-table__cell">{{user.phone}}</td>
+            <td class="mdc-data-table__cell"></td>
+          </tr>
+          <tr class="mdc-data-table__row selected">
+            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">lalala</td>
+            <td class="mdc-data-table__cell ">lalalad</td>
+            <td class="mdc-data-table__cell ">regfgdg</td>
+            <td class="mdc-data-table__cell">dfgdfg</td>
+            <td class="mdc-data-table__cell"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
