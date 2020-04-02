@@ -4,7 +4,6 @@
     <li class="pure-menu-item"><a href="#contact" class="pure-menu-link">Контакты</a></li>
     <li class="pure-menu-item pure-menu-selected"><a href="#pricing" class="pure-menu-link">Стоимость</a></li>
     <li class="pure-menu-item">
-    <li class="pure-menu-item">
       <button (click)="exit()" class="pure-menu-link">Выход</button>
     </li>
   </ul>
@@ -46,7 +45,8 @@
           <table class="mdc-data-table__table table" aria-label="Рейсы">
             <thead>
             <tr class="mdc-data-table__header-row">
-              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">
+              <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
+                  scope="col">
                 ID
               </th>
               <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Дата отправления</th>
@@ -66,14 +66,15 @@
               <td class="mdc-data-table__cell">{{flight.pointArrival}}</td>
               <td class="mdc-data-table__cell">{{flight.timeArrival}}</td>
               <td class="mdc-data-table__cell">
-                <button class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Пассажиры</button>
+                <button class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Пассажиры
+                </button>
               </td>
             </tr>
             </tbody>
           </table>
         </div>
       </div>
+    </div>
   </div>
 </div>
-
 <app-footer></app-footer>

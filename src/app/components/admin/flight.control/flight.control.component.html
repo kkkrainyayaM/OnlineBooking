@@ -3,14 +3,16 @@
   <ul class="pure-menu-list">
     <li class="pure-menu-item"><a href="/admin/users" class="pure-menu-link">Пользователи</a></li>
     <li class="pure-menu-item"><a href="/admin/flights" class="pure-menu-link">Рейсы</a></li>
-    <li class="pure-menu-item"><a href="/" class="pure-menu-link">Выход</a></li>
+    <li class="pure-menu-item">
+      <button (click)="exit()" class="pure-menu-link">Выход</button>
+    </li>
   </ul>
 </div>
 <div class="content">
   <div class="pure-g">
     <div class="pure-u-1-4">
       <div class="forForm">
-        <form class="pure-form pure-form-stacked" (ngSubmit)="AddFlight()">
+        <form class="pure-form pure-form-stacked" (ngSubmit)="addFlight()">
           <fieldset>
             <label for="date">Дата отправления</label>
             <input id="date" type="text">
@@ -63,12 +65,28 @@
             <td class="mdc-data-table__cell">{{flight.pointArrival}}</td>
             <td class="mdc-data-table__cell">{{flight.timeArrival}}</td>
             <td class="mdc-data-table__cell">
-              <button class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Изменить
+              <button (click)="update()" class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Изменить
               </button>
             </td>
             <td class="mdc-data-table__cell">
-              <button class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Пассажиры
+              <a class="mdc-button mdc-button--outlined" href="/admin/flights/1"><span class="mdc-button__ripple"></span> Пассажиры
+              </a>
+            </td>
+          </tr>
+          <tr class="mdc-data-table__row selected">
+            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">1</td>
+            <td class="mdc-data-table__cell ">34</td>
+            <td class="mdc-data-table__cell ">324</td>
+            <td class="mdc-data-table__cell">324</td>
+            <td class="mdc-data-table__cell">2</td>
+            <td class="mdc-data-table__cell">q</td>
+            <td class="mdc-data-table__cell">
+              <button (click)="update()" class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Изменить
               </button>
+            </td>
+            <td class="mdc-data-table__cell">
+              <a class="mdc-button mdc-button--outlined" routerLink="/{{flight.id}}"><span class="mdc-button__ripple"></span> Пассажиры
+              </a>
             </td>
           </tr>
           </tbody>

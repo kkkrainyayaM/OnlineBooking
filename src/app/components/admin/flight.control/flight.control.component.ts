@@ -18,7 +18,7 @@ export class FlightControlComponent implements OnInit {
    this.getFlights();
   }
 
-  AddFlight() {
+  addFlight() {
     this.rest.addFlight(this.newFlight);
   }
 
@@ -28,6 +28,14 @@ export class FlightControlComponent implements OnInit {
       console.log(data);
       this.flights = data;
     });
+  }
+
+  update() {
+
+  }
+
+  exit() {
+
   }
 }
 
