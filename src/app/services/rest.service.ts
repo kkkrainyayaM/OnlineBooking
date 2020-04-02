@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-const endpoint = 'http://localhost:4200/';
+const endpoint = 'http://localhost:8080/springboot-crud-rest/';
+;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -59,8 +60,8 @@ export class RestService {
 
   deleteUser(id): Observable<any> {
     return this.http.delete<any>(endpoint + 'admin/users' + id, httpOptions).pipe(
-      tap(_ => console.log(`deleted flight id=${id}`)),
-      catchError(this.handleError<any>('deleteFlight'))
+      tap(_ => console.log(`deleted user id=${id}`)),
+      catchError(this.handleError<any>('deleteUser'))
     );
   }
 
