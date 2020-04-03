@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import {environment} from '../../environments/environment.prod';
 
-const endpoint = 'http://localhost:8080/springboot-crud-rest/';
-;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -23,46 +22,26 @@ export class RestService {
     return body || { };
   }
 
-  getUsers(): Observable<any> {
-    return this.http.get(endpoint + 'admin/users').pipe(
-      map(this.extractData));
-  }
-
   getFlights(): Observable<any> {
-    return this.http.get(endpoint + 'admin/flights').pipe(
+    return this.http.get(`${environment.apiUrl}/admin/flights`).pipe(
       map(this.extractData));
   }
 
   getUserFlights(id): Observable<any> {
-    return this.http.get(endpoint + 'admin/flights').pipe(
-      map(this.extractData));
-  }
-
-  getPassengers(id): Observable<any> {
-    return this.http.get(endpoint + 'admin/flights/:id').pipe(
+    return this.http.get(`${environment.apiUrl}/admin/flights/` + id ).pipe(
       map(this.extractData));
   }
 
   addFlight(flight): Observable<any> {
     console.log(flight);
-    return this.http.post<any>(endpoint + 'admin/flights', JSON.stringify(flight), httpOptions).pipe(
+    return this.http.post<any>(`${environment.apiUrl}/admin/flights`, JSON.stringify(flight), httpOptions).pipe(
       tap(_ => console.log(`added flight w/ id=${flight.id}`)),
       catchError(this.handleError<any>('addFlight'))
     );
   }
 
-  updateUser(id, user): Observable<any> {
-    return this.http.put(endpoint + 'account/' + id, JSON.stringify(user), httpOptions).pipe(
-      tap(_ => console.log(`updated user id=${id}`)),
-      catchError(this.handleError<any>('updateUser'))
-    );
-  }
-
-  deleteUser(id): Observable<any> {
-    return this.http.delete<any>(endpoint + 'admin/users' + id, httpOptions).pipe(
-      tap(_ => console.log(`deleted user id=${id}`)),
-      catchError(this.handleError<any>('deleteUser'))
-    );
+  updateFlight(id, flight) {
+    return this.http.put(`${environment.apiUrl}.admin/flights/` + id, JSON.stringify(flight));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

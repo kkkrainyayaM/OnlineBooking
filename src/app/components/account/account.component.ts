@@ -3,6 +3,7 @@ import {User} from '../../entities/user';
 import {AuthenticationService, UserService} from '../../services';
 import {first} from 'rxjs/operators';
 import {RestService} from '../../services/rest.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AccountComponent implements OnInit {
   flights: any = [];
 
   constructor(public rest: RestService, private authenticationService: AuthenticationService,
-              private userService: UserService) {
+              private userService: UserService, private router: Router) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
 
@@ -39,15 +40,12 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  exit() {
-
+  updateAcc() {
+    this.userService.updateUser(this.currentUser.id, this.currentUser);
   }
 
-  updateAcc() {
-    /*this.rest.updateUser(this.route.snapshot.params['id'], this.productData).subscribe((result) => {
-      this.router.navigate(['/product-details/'+result._id]);
-    }, (err) => {
-      console.log(err);
-    });*/
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/']);
   }
 }

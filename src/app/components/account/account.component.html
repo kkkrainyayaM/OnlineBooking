@@ -4,7 +4,7 @@
     <li class="pure-menu-item"><a href="#contact" class="pure-menu-link">Контакты</a></li>
     <li class="pure-menu-item pure-menu-selected"><a href="#pricing" class="pure-menu-link">Стоимость</a></li>
     <li class="pure-menu-item">
-      <button (click)="exit()" class="pure-menu-link">Выход</button>
+      <button (click)="logout()" class="pure-menu-link">Выход</button>
     </li>
   </ul>
 </div>
@@ -18,16 +18,16 @@
         <form class="pure-form pure-form-stacked" (ngSubmit)="updateAcc()">
           <fieldset>
             <label for="firstname">Имя</label>
-            <input id="firstname" type="text" placeholder="{{userFromApi.firstname}}">
+            <input id="firstname" type="text" placeholder="{{currentUser.firstname}}">
 
             <label for="lastname">Фамилия</label>
-            <input id="lastname" type="text" placeholder="{{userFromApi.lastname}}">
+            <input id="lastname" type="text" placeholder="{{currentUser.lastname}}">
 
             <label for="phone">Номер телефона</label>
-            <input id="phone" type="text">
+            <input id="phone" type="text" placeholder="{{currentUser.phone}}">
 
             <label for="password">Пароль</label>
-            <input id="password" type="password">
+            <input id="password" type="password" placeholder="{{currentUser.password}}">
           </fieldset>
           <div class="add-btn">
             <button type="submit" class="pure-button pure-button-primary">Сохранить изменения</button>
