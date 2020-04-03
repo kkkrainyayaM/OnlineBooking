@@ -4,8 +4,8 @@ export class User {
   role: Role;
   id: number;
   password: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   phone: string;
   token?: string;
 }

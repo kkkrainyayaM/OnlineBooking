@@ -4,5 +4,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/springboot-crud-rest/'
+  apiUrl: 'http://localhost:8080/springboot-crud-rest'
 };

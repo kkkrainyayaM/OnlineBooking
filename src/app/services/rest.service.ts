@@ -23,25 +23,25 @@ export class RestService {
   }
 
   getFlights(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/admin/flights`).pipe(
+    return this.http.get(`http://localhost:8080/springboot-crud-rest/admin/flights`).pipe(
       map(this.extractData));
   }
 
   getUserFlights(id): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/admin/flights/` + id ).pipe(
+    return this.http.get(`http://localhost:8080/springboot-crud-rest/admin/flights/` + id ).pipe(
       map(this.extractData));
   }
 
   addFlight(flight): Observable<any> {
     console.log(flight);
-    return this.http.post<any>(`${environment.apiUrl}/admin/flights`, JSON.stringify(flight), httpOptions).pipe(
+    return this.http.post<any>(`http://localhost:8080/springboot-crud-rest/admin/flights`, JSON.stringify(flight), httpOptions).pipe(
       tap(_ => console.log(`added flight w/ id=${flight.id}`)),
       catchError(this.handleError<any>('addFlight'))
     );
   }
 
   updateFlight(id, flight) {
-    return this.http.put(`${environment.apiUrl}.admin/flights/` + id, JSON.stringify(flight));
+    return this.http.put(`http://localhost:8080/springboot-crud-rest/admin/flights/` + id, JSON.stringify(flight));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
