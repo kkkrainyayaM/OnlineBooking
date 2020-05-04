@@ -1,17 +1,9 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Flight} from '../../../entities/flight';
-import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-
-const endpoint = 'http://localhost:4200/';
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
+import {FormControl, FormGroup} from '@angular/forms';
+import {RestService} from '../../../services/rest.service';
+import {Search} from '../../../entities/search';
 
 @Component({
   selector: 'app-booking-form',
@@ -21,6 +13,10 @@ const httpOptions = {
 
 export class BookingFormComponent implements OnInit {
 
+  lat = 53.8898991;
+  lng = 27.55607486;
+  zoom = 15;
+
   Points = [
     {name: 'Минск'},
     {name: 'Лунинец'},
@@ -28,25 +24,19 @@ export class BookingFormComponent implements OnInit {
     ];
 
   form = new FormGroup({
-    departure: new FormControl(),
-    arrival: new FormControl(),
+    departurePoint: new FormControl(),
+    arrivalPoint: new FormControl(),
     date: new FormControl(),
-    places: new FormControl()
+    numberOfPlaces: new FormControl()
   });
 
-  public flights: Flight[] =
-    [
-      {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'},
-      {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'},
-      {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'},
-      {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'},
-      {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'},
-      {id: 1, timeDeparture: '08:00', timeArrival: '11:00', pointDeparture: 'Лунинец', pointArrival: 'Минск'}
-    ];
+  public flights: Array<Flight> = [];
+
+  public search: Search;
 
   constructor(
-    private http: HttpClient,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    public restService: RestService) {
   }
 
   openDialog(flight: Flight): void {
@@ -62,22 +52,22 @@ export class BookingFormComponent implements OnInit {
     this.dialog.open(BookingFlightComponent, dialogConfig);
   }
 
-
-  private extractData(res: Response) {
-    const body = res;
-    return body || {};
-  }
-
-  getFlights(): Observable<any> {
-    return this.http.get(endpoint).pipe(
-      map(this.extractData));
-  }
-
   ngOnInit() {}
 
   onSubmit(): void {
-    console.log( this.form.get('departure').value, this.form.get('arrival').value,
-      this.form.get('date').value, this.form.get('places').value );
+    this.flights = [];
+    const formValue = this.form.value;
+    this.search = {
+      arrivalPoint: formValue.arrivalPoint.name,
+      departurePoint: formValue.departurePoint.name,
+      numberOfPlaces: formValue.numberOfPlaces,
+      date: formValue.date
+    };
+    this.restService.addSearch(this.search).subscribe((data: []) => {
+      this.flights = data;
+      console.log('submit');
+      console.log(this.flights);
+    });
   }
 }
 

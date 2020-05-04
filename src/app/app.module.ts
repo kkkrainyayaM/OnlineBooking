@@ -22,7 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AdminComponent } from './components/admin/admin.component';
 import {EntryComponent} from './components/entry/entry.component';
 import {FlightControlComponent, FlightPassengersComponent} from './components/admin/flight.control/flight.control.component';
-
+import { AgmCoreModule } from '@agm/core';
 
 
 const appRoutes: Routes = [
@@ -88,7 +88,10 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatDialogModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCffnJ0eLj1p0LzFBEmjhhDV54QWq87Y9w'
+    })
   ],
   entryComponents: [
     EntryComponent,

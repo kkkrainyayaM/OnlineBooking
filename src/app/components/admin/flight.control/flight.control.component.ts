@@ -34,7 +34,7 @@ export class FlightControlComponent implements OnInit {
   }
 
   update(id: any, flight: any) {
-    this.rest.updateFlight(id, flight); // TODO: set value to form and than to rest
+    this.rest.updateFlight(flight); // TODO: set value to form and than to rest
   }
 
   exit() {
@@ -66,7 +66,7 @@ export class FlightPassengersComponent implements OnInit {
 
   private getPassengers() {
     this.users = [];
-    this.userService.getUsersbyFlight(this.id).subscribe((data: {}) => {
+    this.userService.getPassengersOfFlight(this.id).subscribe((data: {}) => {
       console.log(data);
       this.users = data;
     });

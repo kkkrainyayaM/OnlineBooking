@@ -1,8 +1,6 @@
 ﻿import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../entities/user';
-import {environment} from '../../environments/environment.prod';
-
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -10,26 +8,34 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get<User[]>('http://localhost:8080/springboot-crud-rest/admin/users');
+    return this.http.get<User[]>('http://localhost:8080/users');
   }
 
   register(user: User) {
-    return this.http.post(`http://localhost:8080/springboot-crud-rest/register`, user);
+    return this.http.post(`http://localhost:8080/users`, JSON.stringify(user));
+  }
+
+  login(phone: string, password: string) {
+    return this.http.post(`http://localhost:8080/users/${phone}`, JSON.stringify(password));
   }
 
   getById(id: number) {
-    return this.http.get<User>(`http://localhost:8080/springboot-crud-rest/admin/users/${id}`);
+    return this.http.get<User>(`http://localhost:8080/users/${id}`);
   }
 
-  getUsersbyFlight(id) {
-    return this.http.get( `http://localhost:8080/springboot-crud-rest/flights/${id}`);
+  getByPhone(phone: string) {
+    return this.http.get<User>(`http://localhost:8080/users/${phone}`);
   }
 
-  updateUser(id, user) {
-    return this.http.put(`http://localhost:8080/springboot-crud-rest/account/` + id, JSON.stringify(user));
+  getPassengersOfFlight(id: number) {
+    return this.http.get(`http://localhost:8080//flights/${id}/passengers/`);
   }
 
-  deleteUser(id) {
-    return this.http.delete<any>( `http://localhost:8080/springboot-crud-rest/admin/users` + id);
+  updateUser(id: number, user: User) {
+    return this.http.put(`http://localhost:8080/users` + id, JSON.stringify(user));
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(`http://localhost:8080/users/${id}`);
   }
 }

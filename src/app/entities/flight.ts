@@ -1,7 +1,8 @@
 export class Flight {
   id: number;
-  timeDeparture: string;
-  timeArrival: string;
-  pointDeparture: string;
-  pointArrival: string;
+  date: Date;
+  departureTime: string;
+  arrivalTime: string;
+  departurePoint: string;
+  arrivalPoint: string;
 }

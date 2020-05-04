@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-import {environment} from '../../environments/environment.prod';
+import {Flight} from '../entities/flight';
+import {Search} from '../entities/search';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,38 +24,29 @@ export class RestService {
   }
 
   getFlights(): Observable<any> {
-    return this.http.get(`http://localhost:8080/springboot-crud-rest/admin/flights`).pipe(
+    return this.http.get(`http://localhost:8080/routes`).pipe(
       map(this.extractData));
   }
 
   getUserFlights(id): Observable<any> {
-    return this.http.get(`http://localhost:8080/springboot-crud-rest/admin/flights/` + id ).pipe(
+    return this.http.get(`http://localhost:8080/passenger/${id}/routes` ).pipe(
       map(this.extractData));
   }
 
-  addFlight(flight): Observable<any> {
-    console.log(flight);
-    return this.http.post<any>(`http://localhost:8080/springboot-crud-rest/admin/flights`, JSON.stringify(flight), httpOptions).pipe(
-      tap(_ => console.log(`added flight w/ id=${flight.id}`)),
-      catchError(this.handleError<any>('addFlight'))
-    );
+  addFlight(flight: Flight) {
+    return this.http.post(`http://localhost:8080/routes`, JSON.stringify(flight));
   }
 
-  updateFlight(id, flight) {
-    return this.http.put(`http://localhost:8080/springboot-crud-rest/admin/flights/` + id, JSON.stringify(flight));
+  addSearch(search: Search): Observable<any> {
+    console.log(JSON.stringify(search));
+    return this.http.post(`http://localhost:8080/routes/search`, JSON.stringify(search), httpOptions);
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  updateFlight(flight: Flight) {
+    return this.http.put(`http://localhost:8080/routes`, JSON.stringify(flight));
+  }
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  deleteFlight(id: number) {
+    return this.http.delete(`http://localhost:8080/routes/${id}`);
   }
 }

@@ -9,14 +9,14 @@
             <form [formGroup]="form" class="form" method="POST" (ngSubmit)="onSubmit()">
               <div class="input-group input--large">
                 <label class="label">Откуда</label>
-                <select formControlName="departure" class="input--style-1 selection"
+                <select formControlName="departurePoint" class="input--style-1 selection"
                         name="going">
-                  <option *ngFor="let depPoint of Points" [ngValue]="depPoint" >{{depPoint.name}}</option>
+                  <option *ngFor="let depPoint of Points" [ngValue]="depPoint">{{depPoint.name}}</option>
                 </select>
               </div>
               <div class="input-group input--large">
                 <label class="label">Куда</label>
-                <select formControlName="arrival" class="input--style-1 selection"
+                <select formControlName="arrivalPoint" class="input--style-1 selection"
                         name="going">
                   <option *ngFor="let arrPoint of Points" [ngValue]="arrPoint">{{arrPoint.name}}</option>
                 </select>
@@ -33,7 +33,7 @@
                     <span class="plus">+</span>
                     <span class="minus">-</span>
                   </div>
-                  <input formControlName="places" class="input--style-1 quantity" type="text" name="passengers"
+                  <input formControlName="numberOfPlaces" class="input--style-1 quantity" type="text" name="passengers"
                          value="1 место">
                 </div>
               </div>
@@ -44,25 +44,27 @@
       </div>
     </div>
   </div>
-  <div *ngIf="flights.length>0" class="pure-g">
+  <div class="pure-g">
     <div class="l-box-lrg pure-g pure-u-md-1">
       <div class="wrapper wrapper--w1100">
         <div class="card card-7">
           <div class="card-body">
             <div class="results-block">
-              <div class="flights">
+              <div class="flights pure-u-lg-1-2">
                 <div *ngFor="let flight of flights" class="flight">
                   <div>
-                    <p><span class="departure">ОТПРАВЛЕНИЕ: {{flight.timeDeparture}} {{flight.pointDeparture}}</span>
-                      <span class="arrival">ПРИБЫТИЕ: {{flight.timeArrival}} {{flight.pointArrival}}</span></p>
+                    <p><span class="departure">ОТПРАВЛЕНИЕ: {{flight.departureTime}} {{flight.departurePoint}}</span>
+                      <span class="arrival">ПРИБЫТИЕ: {{flight.arrivalTime}} {{flight.arrivalPoint}}</span></p>
                   </div>
                   <div>
-                    <button title="book" class="btn-add pure-button" (click)="openDialog(flight)" >Забронировать</button>
+                    <button title="book" class="btn-add pure-button" (click)="openDialog(flight)">Забронировать</button>
                   </div>
                 </div>
-                <div class="for-map">
-
-                </div>
+              </div>
+              <div class="for-map pure-u-lg-1-2">
+                <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+                  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
               </div>
             </div>
           </div>
