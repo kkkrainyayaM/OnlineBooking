@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import {Flight} from '../entities/flight';
 import {Search} from '../entities/search';
+import {Passenger} from '../entities/passenger';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,17 +25,17 @@ export class RestService {
   }
 
   getFlights(): Observable<any> {
-    return this.http.get(`http://localhost:8080/routes`).pipe(
+    return this.http.get(`http://localhost:8080/routes`, httpOptions).pipe(
       map(this.extractData));
   }
 
   getUserFlights(id): Observable<any> {
-    return this.http.get(`http://localhost:8080/passenger/${id}/routes` ).pipe(
+    return this.http.get(`http://localhost:8080/passenger/${id}/routes` , httpOptions).pipe(
       map(this.extractData));
   }
 
   addFlight(flight: Flight) {
-    return this.http.post(`http://localhost:8080/routes`, JSON.stringify(flight));
+    return this.http.post(`http://localhost:8080/routes`, JSON.stringify(flight), httpOptions);
   }
 
   addSearch(search: Search): Observable<any> {
@@ -43,10 +44,15 @@ export class RestService {
   }
 
   updateFlight(flight: Flight) {
-    return this.http.put(`http://localhost:8080/routes`, JSON.stringify(flight));
+    return this.http.put(`http://localhost:8080/routes`, JSON.stringify(flight), httpOptions);
   }
 
   deleteFlight(id: number) {
-    return this.http.delete(`http://localhost:8080/routes/${id}`);
+    return this.http.delete(`http://localhost:8080/routes/${id}`, httpOptions);
+  }
+
+  addPassenger(passenger: Passenger) {
+    console.log('passenger');
+    this.http.post(`http://localhost:8080/passengers`, JSON.stringify(passenger), httpOptions);
   }
 }

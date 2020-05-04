@@ -60,10 +60,10 @@
           <tr *ngFor="let flight of flights" class="mdc-data-table__row selected">
             <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{flight.id}}</td>
             <td class="mdc-data-table__cell ">{{flight.date}}</td>
-            <td class="mdc-data-table__cell ">{{flight.pointDeparture}}</td>
-            <td class="mdc-data-table__cell">{{flight.timeDeparture}}</td>
-            <td class="mdc-data-table__cell">{{flight.pointArrival}}</td>
-            <td class="mdc-data-table__cell">{{flight.timeArrival}}</td>
+            <td class="mdc-data-table__cell ">{{flight.departurePoint}}</td>
+            <td class="mdc-data-table__cell">{{flight.departureTime}}</td>
+            <td class="mdc-data-table__cell">{{flight.arrivalPoint}}</td>
+            <td class="mdc-data-table__cell">{{flight.arrivalTime}}</td>
             <td class="mdc-data-table__cell">
               <button (click)="update(flight.id, flight)" class="mdc-button mdc-button--outlined"><span
                 class="mdc-button__ripple"></span> Изменить

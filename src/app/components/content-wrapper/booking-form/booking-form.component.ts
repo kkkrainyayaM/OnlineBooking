@@ -4,6 +4,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogConfig} from '@angula
 import {FormControl, FormGroup} from '@angular/forms';
 import {RestService} from '../../../services/rest.service';
 import {Search} from '../../../entities/search';
+import {Passenger} from '../../../entities/passenger';
+import {AuthenticationService} from '../../../services';
 
 @Component({
   selector: 'app-booking-form',
@@ -46,8 +48,7 @@ export class BookingFormComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '300px';
     dialogConfig.data = {
-      bookedFlight: flight,
-      places: this.form.get('places').value
+      bookedFlight: flight
     };
     this.dialog.open(BookingFlightComponent, dialogConfig);
   }
@@ -79,27 +80,35 @@ export class BookingFormComponent implements OnInit {
 })
 export class BookingFlightComponent {
   flight: Flight;
+  arrivalPoint: string;
   point: string;
   cost: number;
   places: number;
 
+  passenger: Passenger;
+
+
   constructor(
     private dialogRef: MatDialogRef<BookingFlightComponent>,
+    public restService: RestService,
+    private authenticationService: AuthenticationService,
     @Inject(MAT_DIALOG_DATA) data) {
-    this.flight = data.bookedFlight;
-    this.places = data.places;
-    if (data.bookedFlight.pointDeparture === 'Минск') {
-       this.point = 'Автовокзал Центральный г.Минск';
-     } else if (data.bookedFlight.pointDeparture === 'Лунинец') {
-       this.point = 'Автовокзал г.Лунинец';
-     } else { this.point = data.bookedFlight.pointDeparture; }
 
-    if ((data.bookedFlight.pointDeparture === 'Минск' && data.bookedFlight.pointArrival === 'Лунинец')
-       || (data.bookedFlight.pointDeparture === 'Лунинец' && data.bookedFlight.pointArrival === 'Минск')) {
+    this.flight = data.bookedFlight;
+    console.log(this.flight);
+    this.places = 1;
+    if (data.bookedFlight.departurePoint === 'Минск') {
+       this.point = 'Автовокзал Центральный г.Минск';
+     } else if (data.bookedFlight.departurePoint === 'Лунинец') {
+       this.point = 'Автовокзал г.Лунинец';
+     } else { this.point = data.bookedFlight.departurePoint; }
+
+    if ((data.bookedFlight.departurePoint === 'Минск' && data.bookedFlight.arrivalPoint === 'Лунинец')
+       || (data.bookedFlight.departurePoint === 'Лунинец' && data.bookedFlight.arrivalPoint === 'Минск')) {
        this.cost = 14 * this.places;
-     } else if ((data.bookedFlight.pointDeparture === 'Минск' && data.bookedFlight.pointArrival === 'Микашевичи')
-       || (data.bookedFlight.pointDeparture === 'Микашевичи' && data.bookedFlight.pointArrival === 'Минск')) {
-       this.cost = 12 * this.places;
+     } else if ((data.bookedFlight.departurePoint === 'Минск' && data.bookedFlight.arrivalPoint === 'Микашевичи')
+       || (data.bookedFlight.departurePoint === 'Микашевичи' && data.bookedFlight.arrivalPoint === 'Минск')) {
+       this.cost = 12;
      }
   }
 
@@ -109,6 +118,11 @@ export class BookingFlightComponent {
   }
 
   book() {
+    this.passenger = new Passenger(1, this.flight.id, this.flight.departurePoint, this.flight.arrivalPoint);
 
+    // this.passenger.userId = this.authenticationService.currentUserValue.id;
+    this.restService.addPassenger(this.passenger);
+    console.log(this.passenger);
+    this.dialogRef.close();
   }
 }

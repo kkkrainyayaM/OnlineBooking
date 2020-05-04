@@ -34,7 +34,7 @@ export class FlightControlComponent implements OnInit {
   }
 
   update(id: any, flight: any) {
-    this.rest.updateFlight(flight); // TODO: set value to form and than to rest
+    this.rest.updateFlight(flight);
   }
 
   exit() {
@@ -53,7 +53,7 @@ export class FlightControlComponent implements OnInit {
 })
 export class FlightPassengersComponent implements OnInit {
   id: any;
-  users: any = [];
+  passengers: any = [];
 
   constructor(public userService: UserService, private activatedRoute: ActivatedRoute) {}
 
@@ -65,10 +65,10 @@ export class FlightPassengersComponent implements OnInit {
   }
 
   private getPassengers() {
-    this.users = [];
+    this.passengers = [];
     this.userService.getPassengersOfFlight(this.id).subscribe((data: {}) => {
       console.log(data);
-      this.users = data;
+      this.passengers = data;
     });
   }
 }
