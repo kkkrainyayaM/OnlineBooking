@@ -41,7 +41,7 @@ export class AccountComponent implements OnInit {
   }
 
   updateAcc() {
-    this.userService.updateUser(this.currentUser.id, this.currentUser);
+    this.userService.updateUser(this.currentUser);
   }
 
   logout() {

@@ -18,16 +18,16 @@
         <form class="pure-form pure-form-stacked" (ngSubmit)="updateAcc()">
           <fieldset>
             <label for="firstname">Имя</label>
-            <input id="firstname" type="text" placeholder="{{currentUser.firstname}}">
+            <input id="firstname" type="text" value="{{currentUser.firstName}}">
 
             <label for="lastname">Фамилия</label>
-            <input id="lastname" type="text" placeholder="{{currentUser.lastname}}">
+            <input id="lastname" type="text" value="{{currentUser.lastName}}">
 
             <label for="phone">Номер телефона</label>
-            <input id="phone" type="text" placeholder="{{currentUser.phone}}">
+            <input id="phone" type="text" value="{{currentUser.phone}}">
 
             <label for="password">Пароль</label>
-            <input id="password" type="password" placeholder="{{currentUser.password}}">
+            <input id="password" type="password">
           </fieldset>
           <div class="add-btn">
             <button type="submit" class="pure-button pure-button-primary">Сохранить изменения</button>
@@ -51,9 +51,7 @@
               </th>
               <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Дата отправления</th>
               <th class="mdc-data-table__header-cell " role="columnheader" scope="col">Пункт отправления</th>
-              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Время отправления</th>
               <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Пункт прибытия</th>
-              <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Время прибытия</th>
               <th class="mdc-data-table__header-cell" role="columnheader" scope="col"></th>
             </tr>
             </thead>
@@ -61,14 +59,8 @@
             <tr *ngFor="let flight of flights" class="mdc-data-table__row selected">
               <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{flight.id}}</td>
               <td class="mdc-data-table__cell ">{{flight.date}}</td>
-              <td class="mdc-data-table__cell ">{{flight.pointDeparture}}</td>
-              <td class="mdc-data-table__cell">{{flight.timeDeparture}}</td>
-              <td class="mdc-data-table__cell">{{flight.pointArrival}}</td>
-              <td class="mdc-data-table__cell">{{flight.timeArrival}}</td>
-              <td class="mdc-data-table__cell">
-                <button class="mdc-button mdc-button--outlined"><span class="mdc-button__ripple"></span> Пассажиры
-                </button>
-              </td>
+              <td class="mdc-data-table__cell ">{{flight.departurePoint}}</td>
+              <td class="mdc-data-table__cell">{{flight.arrivalPoint}}</td>
             </tr>
             </tbody>
           </table>

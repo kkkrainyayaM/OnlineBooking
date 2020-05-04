@@ -2,9 +2,20 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material';
 import * as $ from 'jquery';
-import {AuthenticationService} from '../../services';
+import {AuthenticationService, UserService} from '../../services';
 import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
+import {User} from '../../entities/user';
+
+class Login {
+  phone: string;
+  password: string;
+
+  constructor(phone: string, password: string) {
+    this.phone = phone;
+    this.password = password;
+  }
+}
 
 @Component({
   selector: 'app-entry',
@@ -20,13 +31,16 @@ export class EntryComponent implements AfterViewInit, OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  logIn: Login;
+  user: User;
 
   constructor(
     public dialogRef: MatDialogRef<EntryComponent>,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userService: UserService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -65,9 +79,9 @@ export class EntryComponent implements AfterViewInit, OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    this.logIn = new Login(this.fl.phone.value, this.fl.password.value)
     this.loading = true;
-    this.authenticationService.login(this.fl.phone.value, this.fl.password.value)
+    this.authenticationService.login(this.logIn)
       .pipe(first())
       .subscribe(
         data => {
@@ -86,9 +100,9 @@ export class EntryComponent implements AfterViewInit, OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-
+    this.user = new User(this.fr.firstname.value, this.fr.lastname.value, this.fr.phone.value);
+    this.userService.register(this.user);
     this.loading = true;
-    // TODO registration submit
   }
 
   ngAfterViewInit() {

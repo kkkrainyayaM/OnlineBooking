@@ -22,10 +22,6 @@ export class UserService {
     return this.http.post(`http://localhost:8080/users`, JSON.stringify(user), httpOptions);
   }
 
-  login(phone: string, password: string) {
-    return this.http.post(`http://localhost:8080/users/${phone}`, JSON.stringify(password), httpOptions);
-  }
-
   getById(id: number) {
     return this.http.get<User>(`http://localhost:8080/users/${id}`, httpOptions);
   }
@@ -38,8 +34,8 @@ export class UserService {
     return this.http.get(`http://localhost:8080/routes/${id}/passengers`, httpOptions);
   }
 
-  updateUser(id: number, user: User) {
-    return this.http.put(`http://localhost:8080/users` + id, JSON.stringify(user), httpOptions);
+  updateUser(user: User) {
+    return this.http.put(`http://localhost:8080/users`, JSON.stringify(user), httpOptions);
   }
 
   deleteUser(id: number) {

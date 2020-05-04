@@ -46,6 +46,7 @@ fieldset{
   min-height: 400px;
   margin: 10px;
   padding-top: 10px;
+  margin-left: 80px;
 }
 
 .mdc-button{

@@ -7,4 +7,11 @@ export class User {
   lastName: string;
   phone: string;
   token?: string;
+
+
+  constructor(firstName: string, lastName: string, phone: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phone = phone;
+  }
 }
